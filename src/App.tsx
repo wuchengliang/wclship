@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
-import Button, { ButtonType, ButtonSize } from './components/Button/button'
-import Alert, { AlertType} from './components/Alert/Alert'
-
+import React from 'react';
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem'  
+import SubMenu from './components/Menu/subMenu'
 const App: React.FC = () => {
-  const [state, setState] =useState(false)
-  const onClick = ()=>{
-    setState(true)
-  }
   return (
     <div className="App">
       <header className="App-header">
-        <Button className="custom"> Hello </Button>
-        <Button disabled> Disabled Button </Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> Large Primary </Button>
-        <Button btnType={ButtonType.Danger} size={ButtonSize.Small}> Small Danger </Button>
-        <Button btnType={ButtonType.Link} href="http://www.baidu.com" target="_blank"> Baidu Link </Button>
-        <Button btnType={ButtonType.Link} href="http://www.baidu.com" disabled> Disabled Link </Button>
+        <Menu defaultIndex={0} onSelect={(index) => {alert(index)}}>
+          <MenuItem>
+            cool link
+          </MenuItem>
+          <MenuItem disabled>
+            cool link 2
+          </MenuItem> 
+          <SubMenu title="dropdown">
+            <MenuItem>
+              dropdown 1
+            </MenuItem>
+            <MenuItem>
+              dropdown 2
+            </MenuItem>
+          </SubMenu>        
+          <MenuItem>
+            cool link 3
+          </MenuItem>
+        </Menu>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -27,8 +36,6 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
-        <a onClick={onClick}>ppp</a>
-        {state&&<Alert title="测试" type="warning"/>}
       </header>
     </div>
   );
