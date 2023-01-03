@@ -6,11 +6,12 @@
   list-style: none;
   border-bottom: $menu-border-width solid $menu-border-color;
   box-shadow: $menu-box-shadow;
-  >.menu-item {
+  > .menu-item {
     padding: $menu-item-padding-y $menu-item-padding-x;
     cursor: pointer;
     transition: $menu-transition;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       text-decoration: none;
     }
     &.is-disabled {
@@ -18,17 +19,44 @@
       pointer-events: none;
       cursor: default;
     }
-    &.is-active, &:hover {
+    &.is-active,
+    &:hover {
       color: $menu-item-active-color;
-      border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+      border-bottom: $menu-item-active-border-width solid
+        $menu-item-active-color;
     }
   }
   .submenu-item {
     position: relative;
+    .submenu-title {
+      display: flex;
+      align-items: center;
+      .arrow-icon {
+        margin-left: 3px;
+        transition: transform 0.25s ease-in-out;
+      }
+      &:hover {
+        .arrow-icon {
+          transform: rotate(180deg);
+        }
+      }
+
+    }
+
+  }
+  .is-vertical {
+    .arrow-icon {
+      transform: rotate(0deg) !important;
+    }
+  }
+  .is-vertical.is-opened {
+    .arrow-icon {
+      transform: rotate(180deg) !important;
+    }
   }
   .viking-submenu {
     display: none;
-    list-style:none;
+    list-style: none;
     padding-left: 0;
     white-space: nowrap;
     //transition: $menu-transition;
@@ -37,7 +65,8 @@
       cursor: pointer;
       transition: $menu-transition;
       color: $body-color;
-      &.is-active, &:hover {
+      &.is-active,
+      &:hover {
         color: $menu-item-active-color !important;
       }
     }
@@ -47,7 +76,7 @@
   }
 }
 .menu-horizontal {
-  >.menu-item {
+  > .menu-item {
     border-bottom: $menu-item-active-border-width solid transparent;
   }
   .viking-submenu {
@@ -65,9 +94,10 @@
   border-bottom: 0px;
   margin: 10px 20px;
   border-right: $menu-border-width solid $menu-border-color;
-  >.menu-item {
+  > .menu-item {
     border-left: $menu-item-active-border-width solid transparent;
-    &.is-active, &:hover {
+    &.is-active,
+    &:hover {
       border-bottom: 0px;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
     }
